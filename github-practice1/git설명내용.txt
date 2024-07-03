@@ -1,0 +1,10 @@
+git add . -> 현재 바뀐 파일들을 전부 staged영역으로 바꾸어줌
+
+git log -> git 커밋한 내용들을 모두 볼 수 있는 명령어
+git log -숫자 -> 숫자 개수만큼 로그 보기
+git log --pretty=oneline
+
+git commit --amend -m '메시지 내용' -> 현재 HEAD에 있는 commit메시지를 변경
+git commit -a -m '메시지 내용' -> git add + git commit -m 기능
+
+branch
