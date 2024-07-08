@@ -58,7 +58,7 @@
         } */
 
         input:focus {
-            background-color: orange;
+            background-color: rgba(158, 28, 28, .5);
         }
 
         /* first-child -> 선택자가 형제 요소 중 첫째라면 선택 */
@@ -121,13 +121,23 @@
        div p:nth-of-type(2) {
             color: red;
        }
+    
+       div { color: #330404 !important; }
+       #color_yellow { color: yellow; }
+       .color_green { color: green; }
+       div { color: blue; }
+       * { color: darkblue; }
+       body { color: violet; }
     </style>
 </head>
 <body>
-    <div>
-        <p>lorem 1</p>
-        <span>span 1</span>
-        <p>lorem 2</p>
+    <div id="color_yellow" class="color_green" style="color: orange;">
+       Hello World
+   </div>
+   <div>  
+       <p>lorem 1</p>
+       <span>span 1</span>
+       <p>lorem 2</p>
     </div>
     <div>
         <p>lorem 3</p>
