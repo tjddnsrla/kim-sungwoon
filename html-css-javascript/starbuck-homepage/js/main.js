@@ -87,4 +87,49 @@ const swiperPromotion = new Swiper('.promotion .swiper-container', {
         el: '.promotion .swiper-pagination', // 페이지 번호 요소 선택자
         clickable: true, // 사용자의 페이지 번호 요소 제어 가능 여부
     },
+    navigation: {
+        prevEl: '.promotion .swiper-prev',
+        nextEl: '.promotion .swiper-next'
+    },
   });
+
+  // promotion click
+const promotionEl = document.querySelector('.promotion');
+const promotionToggleBtn = document.querySelector('.toggle-promotion');
+let isHidePromotion = false;    // 숨김 여부
+
+promotionToggleBtn.addEventListener('click', function(e) {
+    isHidePromotion = !isHidePromotion;
+
+    if(isHidePromotion) {
+        // 숨기기
+        promotionEl.classList.add('hide');
+    } else {
+        // 보이기        
+        promotionEl.classList.remove('hide');
+    }
+});
+
+// youtube floating image
+function floatingObject(selector, delay, size) {
+    // gasp.to(요소, 시간, 옵션);
+    gsap.to(
+        selector, 
+        random(1.5, 2.5), // 애니매이션 동작 시간
+        {                 // 옵션
+            y: size,
+            repeat: -1, // 무한반복
+            yoyo: true, // 한번 재생된 애니메이션을 다시 뒤로 재생
+            ease: Power1.easeInOut,
+            delay: random(0, delay),
+        }
+    );
+}
+// floatingObject('.floating');
+floatingObject('.floating1', 1, 15);
+floatingObject('.floating2', .5, 15);
+floatingObject('.floating3', 1.5, 20);
+
+function random(min, max) {
+    return parseFloat((Math.random() * (max - min) + min).toFixed(2));
+}
