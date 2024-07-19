@@ -28,8 +28,9 @@ searchInputEl.addEventListener('blur', function() {
  * gsap사용법
  * gsap.to(요소, 지속시간, 옵션);
  *   ex) gsap.to('.to-top', .7, {opacity: 0});
-*/
+ */
 const badgeEl = document.querySelector('header .badges');
+const toTopEl = document.querySelector('#to-top');
 window.addEventListener('scroll', _.throttle(() => {
     console.log('scrollY:', window.scrollY);
 
@@ -37,13 +38,28 @@ window.addEventListener('scroll', _.throttle(() => {
         // 배지 숨기기
         //badgeEl.style.display = 'none';
         gsap.to(badgeEl, .5, {opacity: 0, display: 'none'});
+        
+        // 위로가기 버튼 보이기
+        gsap.to(toTopEl, .2, { x: 0 });
     } else {
         // 배지 보이기
         // badgeEl.style.display = 'block';
         gsap.to(badgeEl, .5, {opacity: 1, display: 'block'});
+        
+        // 위로가기 버튼 숨기기
+        gsap.to(toTopEl, .2, { x: 100 });
     }
 }, 500));   // 500ms마다 이벤트 발생
 
+toTopEl.addEventListener('click', function() {
+    gsap.to(
+        window, 
+        0.7, // 애니매이션 동작 시간
+        {                 // 옵션
+            scrollTo: 0,
+        }
+    );
+});
 
 // visual1에 대한 fade-in 효과
 const fadeEls = document.querySelectorAll('.visual1 .fade-in');
@@ -93,7 +109,7 @@ const swiperPromotion = new Swiper('.promotion .swiper-container', {
     },
   });
 
-  // promotion click
+// promotion click
 const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
 let isHidePromotion = false;    // 숨김 여부
@@ -133,3 +149,23 @@ floatingObject('.floating3', 1.5, 20);
 function random(min, max) {
     return parseFloat((Math.random() * (max - min) + min).toFixed(2));
 }
+
+
+// awards swiper
+const awardPromotion = new Swiper('.awards .swiper-container', {
+    // Optional parameters
+    slidesPerView: 5, // 한번에 보여줄 슬라이드 개수 (기본값은 1)
+    spaceBetween: 30, // 슬리이드 사이 여백 
+    loop: true, // 반복 재생 여부
+    autoplay: { 
+        // delay: 1000, // Autoplay delay in milliseconds
+        // disableOnInteraction: false, // Continue autoplay after user interactions
+    },
+    navigation: {
+        prevEl: '.awards .swiper-prev',
+        nextEl: '.awards .swiper-next',
+    },
+  });  
+
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear(); // 현재 년도 표시  
