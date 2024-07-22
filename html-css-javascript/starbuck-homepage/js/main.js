@@ -1,24 +1,36 @@
 console.log('starbucks main.js파일');
 
-const searchEl = document.querySelector('.search');
-const searchInputEl = document.querySelector('input');
-
-// class가 search로 박스를 클릭했을 경우 이벤트 등록
-searchEl.addEventListener('click', function() {
-    // searchInputEl에서 포커스 이벤트 발생
-    searchInputEl.focus();
-});
-
-// tag가 input박스인 것에 focus 이벤트 등록
-searchInputEl.addEventListener('focus', function() {
-    searchEl.classList.add('focused');
-    searchInputEl.setAttribute('placeholder', '통합검색');
-});
-
+// vanilla js------------------
+// const searchEl = document.querySelector('.search');
+// const searchInputEl = document.querySelector('input');
+// // class가 search로 박스를 클릭했을 경우 이벤트 등록
+// searchEl.addEventListener('click', function() {
+//     // searchInputEl에서 포커스 이벤트 발생
+//    searchInputEl.focus();
+// });
+// // tag가 input박스인 것에 focus 이벤트 등록
+// searchInputEl.addEventListener('focus', function() {
+//     searchEl.classList.add('focused');
+//     searchInputEl.setAttribute('placeholder', '통합검색');
+// });
 // tag가 input박스인 것에 blur 이벤트 등록
 searchInputEl.addEventListener('blur', function() {
     searchEl.classList.remove('focused');
     searchInputEl.setAttribute('placeholder', '');
+});
+
+
+// jquery js-$문법----------------
+// const searchEl = $(".search");
+// const searchInputEl = $("input");
+$(".search").on("click", function(event) {
+    $('input').focus();
+});
+$("input").on("focus", (event) => {
+    $('input').attr('placeholder', '통합검색');
+});
+$("input").on("blur", function(event) {
+    $('input').attr('placeholder', '');
 });
 
 
@@ -105,14 +117,15 @@ const swiperPromotion = new Swiper('.promotion .swiper-container', {
     },
     navigation: {
         prevEl: '.promotion .swiper-prev',
-        nextEl: '.promotion .swiper-next'
+        nextEl: '.promotion .swiper-next',
     },
-  });
+  });  
 
 // promotion click
 const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
 let isHidePromotion = false;    // 숨김 여부
+
 
 promotionToggleBtn.addEventListener('click', function(e) {
     isHidePromotion = !isHidePromotion;
@@ -145,7 +158,6 @@ function floatingObject(selector, delay, size) {
 floatingObject('.floating1', 1, 15);
 floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
-
 function random(min, max) {
     return parseFloat((Math.random() * (max - min) + min).toFixed(2));
 }
@@ -167,5 +179,5 @@ const awardPromotion = new Swiper('.awards .swiper-container', {
     },
   });  
 
-const thisYear = document.querySelector('.this-year');
+ const thisYear = document.querySelector('.this-year');
 thisYear.textContent = new Date().getFullYear(); // 현재 년도 표시  
