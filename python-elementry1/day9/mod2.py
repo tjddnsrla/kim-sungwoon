@@ -7,5 +7,5 @@ class Math:
         return PI * (r ** 2)
 
 # add 함수 추가 
-def add (a, b): 
+def add(a, b): 
     return a+b 
