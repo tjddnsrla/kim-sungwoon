@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
     <!-- 4. 커스템 css파일 세팅(local) -->
     <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/notice.css" rel="stylesheet">
     <!-- 5. 폰트 설정 -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
@@ -39,21 +40,50 @@
     <!-- swiper 6.8.4 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js" integrity="sha512-BABFxitBmYt44N6n1NIJkGOsNaVaCs/GpaJwDktrfkWIBFnMD6p5l9m+Kc/4SLJSJ4mYf+cstX98NYrsG/M9ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css" integrity="sha512-aMup4I6BUl0dG4IBb0/f32270a5XP7H1xplAJ80uVKP6ejYCgZWcBudljdsointfHxn5o302Jbnq1FXsBaMuoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script defer src="./js/youtube.js"></script>
-    <script defer src="./js/main.js"></script>
 </head>
 <body>
 	<%@ include file="./header.jsp" %>
 	<%	
-		System.out.println("공지사항 목록페이지 상단");
+		//System.out.println("공지사항 목록페이지 상단");
 	%>
-    <section style="margin-top:120px;">
-    공지사항 리스트
-    </section>
+    
+    <!-- notice top -->
+    <section class="">
+         <div class="inner sub_tit_wrap">
+             <div class="sub_tit_inner">
 
-	<%
-		System.out.println("공지사항 목록페이지 하단");
-	%>
-	<%@ include file="./footer.jsp" %>
+                </li>
+                    <a href="/starbucks-homepage1">
+                       <img src="https://image.istarbucks.co.kr/common/img/common/icon_home.png" alt="홈으로">
+                   </a>
+               </li>
+               <li>
+                   <img class="arrow" src="https://image.istarbucks.co.kr/common/img/common/icon_arrow.png" alt="하위메뉴">
+               </li>
+               <li><a href="#">WHAT'S NEW</a></li>
+               <li>
+                   <img class="arrow" src="https://image.istarbucks.co.kr/common/img/common/icon_arrow.png" alt="하위메뉴">
+               </li>
+               <li><a href="#">공지사항</a></li>
+        </ul>
+    </div>
+    <div class="news_sch_wrap">
+        <div class="sch_items">
+            <input type="text" name="sch_bar" id="sch_bar" placeholder="검색어를 입력해 주세요." />
+            <a href="javascript:void(0);" class="new-board-search-btn">검색</a>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- notice list -->
+<section>
+
+</section>
+
+   <%
+        //System.out.println("공지사항 목록페이지 하단");
+    %>
+<jsp:include page="./footer.jsp" />
 </body>
 </html>
