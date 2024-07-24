@@ -18,6 +18,7 @@
     <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
     <!-- 4. 커스템 css파일 세팅(local) -->
     <link href="./css/main.css" rel="stylesheet">
+    <link href="./css/notice.css" rel="stylesheet">
     <!-- 5. 폰트 설정 -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet" />
@@ -49,15 +50,35 @@
 <body>
 	<%@ include file="./header.jsp" %>
     <%
-		System.out.println("공지사항 상세페이지 상단");
+        // 선택한 글 조회수 1 올리기
+        //System.out.println("공지사항 상세페이지 상단");
 	%>
-	
-    <section style="margin-top:120px;">
+    
+	<%--	<System.out=""margin-top:120px;">
     공지사항 상세페이지1 -> <%= noticeSeq %>: <%= noticeTitle %>
-    </section>
-	<%
-		System.out.println("공지사항 상세페이지 하단");
-	%>
-	<%@ include file="./footer.jsp" %>
+    </section> --%>
+	
+    <!-- notice detail top(공지사항 리스트의 상단과 50% 비슷함) -->
+    
+    <!-- notice detail main -->
+    
+<!-- notice detail bottom -->
+<section class="notice_detail_bottom">
+    <div class="inner sub_detail_btm">
+        <div class="bottom__prev">
+            <div class="nd_btm_left">윗글</div>
+              <div class="nd_btm_right">윗글 타이틀</div>
+        </div>
+        <div class="bottom__next">
+            <div class="nd_btm_left">아랫글</div>
+              <div class="nd_btm_right">아랫글 타이틀</div>
+        </div>
+    </div>
+</section>
+
+<%
+    //System.out.println("공지사항 상세페이지 하단");
+%>
+<%@ include file="./footer.jsp" %>
 </body>
 </html>
