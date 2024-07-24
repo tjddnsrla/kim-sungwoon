@@ -155,7 +155,7 @@
 	%>
     
 	<%
-		//System.out.println("공지사항 상세페이지 하단");
+	//System.out.println("공지사항 상세페이지 하단");
 	%>
 	<%@ include file="./footer.jsp" %>
 </body>
