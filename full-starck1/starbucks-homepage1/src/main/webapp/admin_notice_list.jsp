@@ -5,6 +5,9 @@
 <%@ page import = "java.sql.ResultSet" %>
 <%@ page import = "java.sql.SQLException" %>
 <%@ page import = "com.starbucks.utils.DBManager" %>
+<%
+	String searchKeyword = request.getParameter("search");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,24 +53,46 @@
 				<div>작성자</div>
 				<div></div>
 			</div>
+			<!-- 공지사항 어드민 게시글 제목 리스트 -->
+			<%
+			//DB접속 객체 가져오기
+			Connection conn = DBManager.getDBConnection();
+
+			//DB조회쿼리 실행하여 DB에 있는 데이터 값 가져오기
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try {
+				//String selectSql = "SELECT * FROM board ORDER BY seq DESC";
+				String selectSql;
+				if (searchKeyword != null & searchKeyword != "") {
+					selectSql = "SELECT * FROM board WHERE TITLE LIKE '%" 
+						+ searchKeyword + "%' ORDER BY seq DESC";
+				} else {
+					selectSql = "SELECT * FROM board ORDER BY seq DESC";	
+				}
+
+				pstmt = conn.prepareStatement(selectSql);
+				rs = pstmt.executeQuery(); // sql실행
+
+				while (rs.next()) {
+			%>
 			<div class="content-items">
-				<div>1</div>
-				<div>공지사항 1번입니다.</div>
-				<div>홍길동</div>
-				<div>
-					<button>수정</button>
-					<button>삭제</button> 
-				</div>
+				<div><%= rs.getInt("SEQ") %></div>
+                <div><%= rs.getString("TITLE") %></div>
+                <div><%= rs.getString("WRITER") %></div>
+                <div>
+                	<button style="cursor: pointer;" onClick="">수정</button>
+                	<button style="cursor: pointer;" onClick="">삭제</button>
+               	</div>
 			</div>
-			<div class="content-items">
-				<div>2</div>
-				<div>공지사항 2번입니다.</div>
-				<div>유관순</div>
-				<div>
-					<button>수정</button>
-					<button>삭제</button> 
-				</div>
-			</div>
+		<%
+			}
+		} catch (SQLException se) {
+			System.out.println("게시판 조회 쿼리 실행 오류: " + se.getMessage());
+		} finally {
+			DBManager.dbClose(conn, pstmt, rs);
+		}
+		%>
 		</div>
 	</div>
 </body>
