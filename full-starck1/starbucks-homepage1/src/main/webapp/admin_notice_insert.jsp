@@ -54,6 +54,9 @@
 오류내용: <%= exception.getMessage() %>
 <%
 	} else {					// 글 등록시 성공일 때 처리
+		out.println("<script>alert('공지사항 글이 성공적으로 등록되었습니다.');</script>");
+		// admin_notice_list.jsp파일로 이동	
+		//response.sendRedirect(request.getContextPath() + "/admin_notice_list.jsp");
 %>
 <script>
 	alert('공지사항 글이 성공적으로 등록되었습니다.');

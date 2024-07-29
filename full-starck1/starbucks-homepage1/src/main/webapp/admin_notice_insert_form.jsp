@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	//String value1 = (String)session.getAttribute("key1");	// 세션에 key1의 value1값 가져온다.
+	//String value2 = (String)session.getAttribute("key2");	// 세션에 key2의 value2값 가져온다.
+	
+	//System.out.println("key1의 값은 " + value1);
+	//System.out.println("key2의 값은 " + value2);
+	
+	String sessionId = session.getId();
+	System.out.println("session아이디 -> " + sessionId);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +35,7 @@
 		<div class="card-header">
 			<h1>스타벅스 공지사항 등록</h1>	
 		</div>
-		<form action="./admin_notice_insert.jsp" method="post" id="form1">
+		<form action="./admin_notice_insert.jsp" method="post" id="form1" onSubmit="return false">
 			<div class="card-write">
 				<div class="info info-writer">
 					<div>작성자</div>

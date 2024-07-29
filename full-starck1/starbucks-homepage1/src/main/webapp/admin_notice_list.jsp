@@ -7,6 +7,9 @@
 <%@ page import = "com.starbucks.utils.DBManager" %>
 <%
 	String searchKeyword = request.getParameter("search");
+	
+	//session.setAttribute("key1", "value1");	// 세션에 key1와 value1을 저장
+	//session.setAttribute("key2", "value2");	// 세션에 key2와 value2을 저장
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +85,8 @@
                 <div><%= rs.getString("WRITER") %></div>
                 <div>
                 	<button style="cursor: pointer;" onClick="">수정</button>
-                	<button style="cursor: pointer;" onClick="">삭제</button>
+                	<!-- get방식으로 삭제 -->
+					<button style="cursor: pointer;" onClick="">삭제</button>
                	</div>
 			</div>
 		<%
